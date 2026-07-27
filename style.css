@@ -1,0 +1,346 @@
+/* ==========================================
+   1. CẤU HÌNH BẢNG MÀU HỒNG SWEET & ROMANTIC
+   ========================================== */
+:root {
+  --bg-gradient-top: #ffd1dc;    /* Hồng phấn dịu */
+  --bg-gradient-bottom: #5c1335; /* Hồng rượu lãng mạn */
+  --pink-glow: #ff69b4;          /* Hồng rực phát sáng */
+  --pastel-pink: #ffb6c1;        /* Hồng pastel nhẹ */
+  --star-gold: #fff0f5;          /* Trắng hồng ánh sao */
+  --white: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  /* Nền chuyển màu hồng ngọt ngào */
+  background: radial-gradient(ellipse at bottom, #8b2652 0%, #2b0818 100%);
+  color: var(--white);
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* ==========================================
+   2. HIỆU ỨNG NỀN & VẬT THỂ FLYING
+   ========================================== */
+/* Bầu trời sao */
+.stars-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.star {
+  position: absolute;
+  background-color: var(--white);
+  border-radius: 50%;
+  animation: twinkle var(--duration) infinite ease-in-out;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* Canvas pháo hoa */
+#fireworks-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Tim bay theo con trỏ chuột */
+.heart-cursor {
+  position: absolute;
+  pointer-events: none;
+  font-size: 18px;
+  animation: fadeOut 1s forwards;
+  z-index: 1000;
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; transform: scale(1) translateY(0); }
+  100% { opacity: 0; transform: scale(1.5) translateY(-20px); }
+}
+
+/* Cánh hoa rơi */
+.petal {
+  position: fixed;
+  background-color: var(--pastel-pink);
+  border-radius: 15px 0 15px 0;
+  pointer-events: none;
+  z-index: 3;
+  animation: fall linear forwards;
+}
+
+@keyframes fall {
+  to { transform: translateY(100vh) rotate(360deg); }
+}
+
+/* ==========================================
+   3. QUẢN LÝ CHUYỂN MÀN HÌNH (SCREENS)
+   ========================================== */
+.screen {
+  position: relative;
+  z-index: 10;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.hidden {
+  display: none !important;
+  opacity: 0;
+}
+
+.active {
+  display: flex !important;
+  opacity: 1;
+}
+
+/* ==========================================
+   4. THÀNH PHẦN GIAO DIỆN & NÚT BẤM
+   ========================================== */
+.glass-card {
+  background: rgba(255, 192, 203, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 182, 193, 0.2);
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 8px 32px 0 rgba(255, 105, 180, 0.3);
+}
+
+.glow-text {
+  font-size: 3rem;
+  color: #fff0f5;
+  text-shadow: 0 0 10px var(--pink-glow), 0 0 20px #ff1493;
+}
+
+.name-text {
+  font-size: 2rem;
+  margin: 15px 0 25px 0;
+  color: var(--star-gold);
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 25px;
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background: linear-gradient(45deg, #ff758c, #ff7eb3);
+  color: white;
+  box-shadow: 0 4px 15px rgba(255, 117, 140, 0.5);
+}
+
+.btn-primary:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(255, 117, 140, 0.6);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.btn-surprise {
+  background: linear-gradient(45deg, #ff1493, #ff8da1);
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 0 15px var(--pink-glow);
+}
+
+.btn-surprise:hover {
+  transform: scale(1.05);
+}
+
+/* ==========================================
+   5. NỘI DUNG, POLAROID & TIMELINE
+   ========================================== */
+.content-box {
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+}
+
+.polaroid {
+  background: white;
+  padding: 15px 15px 25px 15px;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  transform: rotate(-3deg);
+  margin-bottom: 25px;
+}
+
+.polaroid img {
+  width: 100%;
+  max-height: 350px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.polaroid .caption {
+  color: #333;
+  font-size: 1.1rem;
+  margin-top: 10px;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.wishes-text {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  color: #e0e0e0;
+}
+
+/* Timeline */
+.timeline-box {
+  text-align: center;
+}
+
+.timeline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  font-size: 1.5rem;
+  margin: 30px 0;
+  color: var(--star-gold);
+}
+
+.timeline .line {
+  width: 100px;
+  height: 2px;
+  background: var(--star-gold);
+}
+
+/* ==========================================
+   6. LÁ THƯ & ALBUM ẢNH
+   ========================================== */
+.letter-btn {
+  background: rgba(255, 182, 193, 0.2);
+  border: 1px dashed var(--pastel-pink);
+  padding: 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.letter-btn:hover {
+  background: rgba(255, 182, 193, 0.35);
+}
+
+.letter-content {
+  background: rgba(255, 255, 255, 0.95);
+  color: #333;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 10px;
+  line-height: 1.6;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Album Container đặt dưới lá thư */
+.album-container {
+  background: rgba(255, 182, 193, 0.1);
+  border-radius: 15px;
+  padding: 15px;
+  border: 1px solid rgba(255, 105, 180, 0.3);
+}
+
+.album-title {
+  color: var(--pastel-pink);
+  margin-bottom: 12px;
+  font-size: 1.2rem;
+}
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  max-height: 280px;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+.photo-grid::-webkit-scrollbar {
+  width: 5px;
+}
+
+.photo-grid::-webkit-scrollbar-thumb {
+  background: var(--pink-glow);
+  border-radius: 10px;
+}
+
+.photo-item {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.photo-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.photo-item:hover {
+  transform: scale(1.05);
+}
+
+/* ==========================================
+   7. BẤT NGỜ CUỐI CÙNG & UTILITIES
+   ========================================== */
+.cake-glow {
+  width: 150px;
+  filter: drop-shadow(0 0 15px #ffb6c1);
+}
+
+.floating {
+  animation: float 3s infinite ease-in-out;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+.mt-20 { 
+  margin-top: 20px; 
+}
+
+/* Responsive cho thiết bị di động */
+@media (max-width: 480px) {
+  .photo-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .glow-text {
+    font-size: 2.2rem;
+  }
+}
