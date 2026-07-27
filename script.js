@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // 1. KẾT NỐI PHẦN TỬ HTML
+  // 1. PHẦN TỬ GIAO DIỆN
   const bgMusic = document.getElementById("bg-music");
   const startBtn = document.getElementById("start-btn");
   const toTransitionBtn = document.getElementById("to-transition-btn");
@@ -16,7 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
     surprise: document.getElementById("surprise-sec")
   };
 
-  // Hàm hỗ trợ ẩn/hiện màn hình
   function switchScreen(from, to) {
     from.classList.remove("active");
     from.classList.add("hidden");
@@ -24,22 +23,24 @@ document.addEventListener("DOMContentLoaded", () => {
     to.classList.add("active");
   }
 
-  // 2. KHỞI TẠO NỀN TIA SAO GALAXY
+  // 2. NỀN SAO BẦU TRỜI
   const starsContainer = document.querySelector(".stars-container");
-  for (let i = 0; i < 150; i++) {
-    const star = document.createElement("div");
-    star.className = "star";
-    star.style.width = `${Math.random() * 3}px`;
-    star.style.height = star.style.width;
-    star.style.top = `${Math.random() * 100}%`;
-    star.style.left = `${Math.random() * 100}%`;
-    star.style.setProperty("--duration", `${2 + Math.random() * 3}s`);
-    starsContainer.appendChild(star);
+  if (starsContainer) {
+    for (let i = 0; i < 150; i++) {
+      const star = document.createElement("div");
+      star.className = "star";
+      star.style.width = `${Math.random() * 3}px`;
+      star.style.height = star.style.width;
+      star.style.top = `${Math.random() * 100}%`;
+      star.style.left = `${Math.random() * 100}%`;
+      star.style.setProperty("--duration", `${2 + Math.random() * 3}s`);
+      starsContainer.appendChild(star);
+    }
   }
 
   // 3. HIỆU ỨNG TIM BAY THEO CHUỘT
   document.addEventListener("mousemove", (e) => {
-    if (Math.random() > 0.3) return; // Hạn chế số lượng để không lag
+    if (Math.random() > 0.3) return;
     const heart = document.createElement("span");
     heart.className = "heart-cursor";
     heart.innerHTML = "💖";
@@ -49,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => heart.remove(), 1000);
   });
 
-  // 4. HIỆU ỨNG CÁNH HOA RƠI
+  // 4. CÁNH HOA RƠI
   function createPetal() {
     const petal = document.createElement("div");
     petal.className = "petal";
@@ -61,35 +62,43 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => petal.remove(), 9000);
   }
 
-  // 5. XỬ LÝ NÚT VÀ CHUYỂN MÀN HÌNH
-  // Màn hình 0 -> Màn hình 1
+  // 5. BẮT SỰ KIỆN NÚT VÀ PHÁT NHẠC
   startBtn.addEventListener("click", () => {
-    bgMusic.play().catch(() => console.log("Trình duyệt chặn tự động phát nhạc"));
-    confetti({ particleCount: 50, spread: 60, origin: { y: 0.8 } });
+    // Ép buộc phát nhạc khi bấm nút
+    if (bgMusic) {
+      bgMusic.volume = 0.8;
+      bgMusic.play().then(() => {
+        console.log("Nhạc đang phát thành công!");
+      }).catch((err) => {
+        console.log("Lỗi phát nhạc:", err);
+      });
+    }
+
+    if (typeof confetti === "function") {
+      confetti({ particleCount: 50, spread: 60, origin: { y: 0.8 } });
+    }
+    
     switchScreen(screens.welcome, screens.baby);
   });
 
-  // Màn hình 1 -> Timeline
   toTransitionBtn.addEventListener("click", () => {
     switchScreen(screens.baby, screens.transition);
   });
 
-  // Timeline -> Màn hình Hiện Tại (Ảnh + Thư + Album)
   toNowBtn.addEventListener("click", () => {
     switchScreen(screens.transition, screens.now);
-    setInterval(createPetal, 300); // Bắt đầu rơi cánh hoa
+    setInterval(createPetal, 300);
   });
 
-  // Bật/tắt Lá Thư
+  // Mở / Ẩn lá thư
   letterBtn.addEventListener("click", () => {
     letterContent.classList.toggle("hidden");
   });
 
-  // Nút Bất Ngờ Cuối Cùng (Màn hình Pháo hoa)
+  // Nút pháo hoa màn hình cuối
   surpriseBtn.addEventListener("click", () => {
     switchScreen(screens.now, screens.surprise);
     
-    // Bắn pháo hoa liên tục trong 10 giây
     const duration = 10 * 1000;
     const animationEnd = Date.now() + duration;
     const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 100 };
@@ -99,7 +108,9 @@ document.addEventListener("DOMContentLoaded", () => {
       if (timeLeft <= 0) return clearInterval(interval);
 
       const particleCount = 50 * (timeLeft / duration);
-      confetti({ ...defaults, particleCount, origin: { x: Math.random(), y: Math.random() - 0.2 } });
+      if (typeof confetti === "function") {
+        confetti({ ...defaults, particleCount, origin: { x: Math.random(), y: Math.random() - 0.2 } });
+      }
     }, 250);
   });
 });

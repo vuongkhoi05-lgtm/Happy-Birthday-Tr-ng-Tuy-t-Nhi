@@ -1,12 +1,7 @@
-/* ==========================================
-   1. CẤU HÌNH BẢNG MÀU HỒNG SWEET & ROMANTIC
-   ========================================== */
 :root {
-  --bg-gradient-top: #ffd1dc;    /* Hồng phấn dịu */
-  --bg-gradient-bottom: #5c1335; /* Hồng rượu lãng mạn */
-  --pink-glow: #ff69b4;          /* Hồng rực phát sáng */
-  --pastel-pink: #ffb6c1;        /* Hồng pastel nhẹ */
-  --star-gold: #fff0f5;          /* Trắng hồng ánh sao */
+  --pink-glow: #ff69b4;
+  --pastel-pink: #ffb6c1;
+  --star-gold: #fff0f5;
   --white: #ffffff;
 }
 
@@ -18,17 +13,12 @@
 }
 
 body {
-  /* Nền chuyển màu hồng ngọt ngào */
   background: radial-gradient(ellipse at bottom, #8b2652 0%, #2b0818 100%);
   color: var(--white);
   overflow-x: hidden;
   min-height: 100vh;
 }
 
-/* ==========================================
-   2. HIỆU ỨNG NỀN & VẬT THỂ FLYING
-   ========================================== */
-/* Bầu trời sao */
 .stars-container {
   position: fixed;
   top: 0;
@@ -51,7 +41,6 @@ body {
   50% { opacity: 1; transform: scale(1.2); }
 }
 
-/* Canvas pháo hoa */
 #fireworks-canvas {
   position: fixed;
   top: 0;
@@ -62,7 +51,6 @@ body {
   z-index: 2;
 }
 
-/* Tim bay theo con trỏ chuột */
 .heart-cursor {
   position: absolute;
   pointer-events: none;
@@ -76,7 +64,6 @@ body {
   100% { opacity: 0; transform: scale(1.5) translateY(-20px); }
 }
 
-/* Cánh hoa rơi */
 .petal {
   position: fixed;
   background-color: var(--pastel-pink);
@@ -90,9 +77,6 @@ body {
   to { transform: translateY(100vh) rotate(360deg); }
 }
 
-/* ==========================================
-   3. QUẢN LÝ CHUYỂN MÀN HÌNH (SCREENS)
-   ========================================== */
 .screen {
   position: relative;
   z-index: 10;
@@ -114,9 +98,6 @@ body {
   opacity: 1;
 }
 
-/* ==========================================
-   4. THÀNH PHẦN GIAO DIỆN & NÚT BẤM
-   ========================================== */
 .glass-card {
   background: rgba(255, 192, 203, 0.1);
   backdrop-filter: blur(10px);
@@ -156,7 +137,6 @@ button {
 
 .btn-primary:hover {
   transform: scale(1.05);
-  box-shadow: 0 6px 20px rgba(255, 117, 140, 0.6);
 }
 
 .btn-secondary {
@@ -176,9 +156,6 @@ button {
   transform: scale(1.05);
 }
 
-/* ==========================================
-   5. NỘI DUNG, POLAROID & TIMELINE
-   ========================================== */
 .content-box {
   max-width: 600px;
   width: 100%;
@@ -215,7 +192,6 @@ button {
   color: #e0e0e0;
 }
 
-/* Timeline */
 .timeline-box {
   text-align: center;
 }
@@ -236,9 +212,6 @@ button {
   background: var(--star-gold);
 }
 
-/* ==========================================
-   6. LÁ THƯ & ALBUM ẢNH
-   ========================================== */
 .letter-btn {
   background: rgba(255, 182, 193, 0.2);
   border: 1px dashed var(--pastel-pink);
@@ -259,10 +232,10 @@ button {
   border-radius: 10px;
   margin-top: 10px;
   line-height: 1.6;
+  text-align: left;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* Album Container đặt dưới lá thư */
 .album-container {
   background: rgba(255, 182, 193, 0.1);
   border-radius: 15px;
@@ -314,9 +287,6 @@ button {
   transform: scale(1.05);
 }
 
-/* ==========================================
-   7. BẤT NGỜ CUỐI CÙNG & UTILITIES
-   ========================================== */
 .cake-glow {
   width: 150px;
   filter: drop-shadow(0 0 15px #ffb6c1);
@@ -335,7 +305,28 @@ button {
   margin-top: 20px; 
 }
 
-/* Responsive cho thiết bị di động */
+.center-text {
+  text-align: center;
+}
+
+.big-glow-text {
+  font-size: 2.5rem;
+  color: #fff0f5;
+  text-shadow: 0 0 15px var(--pink-glow);
+  margin: 15px 0;
+}
+
+.final-msg p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+
+.final-msg h3 {
+  color: var(--pastel-pink);
+  margin-top: 15px;
+}
+
 @media (max-width: 480px) {
   .photo-grid {
     grid-template-columns: repeat(2, 1fr);
