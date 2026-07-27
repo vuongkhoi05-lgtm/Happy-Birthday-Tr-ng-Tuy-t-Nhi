@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Happy Birthday!</title>
+  <title>Happy Birthday Trương Tuyết Nhi!</title>
   <link rel="stylesheet" href="style.css">
-  <!-- Canvas-Confetti & Canvas-Fireworks CDN -->
+  <!-- Canvas-Confetti CDN -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
 <body>
@@ -15,14 +15,14 @@
   <canvas id="fireworks-canvas"></canvas>
 
   <!-- Audio Element -->
-  <audio id="bg-music" src="c:\Users\ADMIN\Downloads\Happy Birthday To You - Happy Birthday - Happy Birthday - Happy Birthday To You...! - Happy Birthday.mp3" loop></audio>
+  <audio id="bg-music" src="assets/music.mp3" loop></audio>
 
   <!-- Section 0: Welcome Screen -->
   <section id="welcome-sec" class="screen active">
     <div class="glass-card fade-in">
       <h1 class="glow-text">Happy Birthday</h1>
-      <h2 class="name-text">[Trương Tuyết Nhi]</h2>
-      <button id="start-btn" class="btn-primary">✨ Chạm để bắt đầu  ✨</button>
+      <h2 class="name-text">Trương Tuyết Nhi</h2>
+      <button id="start-btn" class="btn-primary">✨ Chạm để bắt đầu ✨</button>
     </div>
   </section>
 
@@ -30,7 +30,7 @@
   <section id="baby-sec" class="screen hidden">
     <div class="content-box">
       <div class="polaroid">
-        <img src="c:\Users\ADMIN\Downloads\fe3a3bc5-43ee-4375-a9a4-7a64b3446278.jpg" alt="Ảnh ngày ấy">
+        <img src="assets/baby.jpg" alt="Ảnh ngày ấy">
         <div class="caption">Những năm tháng ngây thơ...</div>
       </div>
       <p class="wishes-text">
@@ -58,7 +58,7 @@
   <section id="now-sec" class="screen hidden">
     <div class="content-box">
       <div class="polaroid zoom-effect">
-        <img src="c:\Users\ADMIN\Downloads\f6d208cd-715e-4470-9f1e-7d15618c1142.jpg" alt="Ảnh hiện tại">
+        <img src="assets/now.jpg" alt="Ảnh hiện tại">
         <div class="caption">Cô gái rạng rỡ của hôm nay</div>
       </div>
       <p class="wishes-text">
@@ -72,27 +72,21 @@
         </div>
         <div id="letter-content" class="letter-content hidden">
           <p>
-            **Gửi em -- cô gái bước sang tuổi 19.**
-
-Chúc mừng sinh nhật Tuyết Nhi!
-
-Hôm nay em chính thức bước sang tuổi 19 , độ tuổi đẹp nhất của thanh xuân, nơi những ước mơ còn dang dở và cả một bầu trời tương lai đang rộng mở phía trước.
-
-Từ tận đáy lòng, anh chỉ mong em luôn mạnh khỏe, bình an và mãi giữ được nụ cười trong trẻo như bây giờ. Cuộc sống sẽ có những ngày nắng đẹp, cũng sẽ có những lúc giông bão, nhưng anh hy vọng em sẽ luôn đủ mạnh mẽ để vượt qua tất cả và đủ dịu dàng để yêu thương chính mình.
-
-Cảm ơn em vì đã xuất hiện, để thanh xuân của ai đó có thêm một người đáng nhớ. Dù sau này mỗi người có đi trên một con đường riêng, anh vẫn mong em sẽ gặp được những điều tốt đẹp nhất, gặp đúng người biết trân trọng em và sống một cuộc đời thật hạnh phúc.
-
-Tuổi 19 chỉ đến một lần trong đời. Hãy sống hết mình, cười thật nhiều, theo đuổi những điều em yêu thích và đừng bao giờ từ bỏ ước mơ của mình.
-
-**Chúc mừng sinh nhật tuổi 19, cô gái đặc biệt!**
-Mong rằng mỗi ngọn nến em thổi hôm nay sẽ mang theo một điều ước thành hiện thực. Và dù ở bất cứ nơi đâu, anh vẫn luôn âm thầm chúc em có một cuộc đời rực rỡ, bình yên và hạnh phúc hơn tất cả những gì em từng mong đợi.
-
-**Sinh nhật vui vẻ nhé, em!** 🎂🎉💙
-
+            <strong>Gửi em — cô gái bước sang tuổi 19.</strong><br><br>
+            Chúc mừng sinh nhật Tuyết Nhi!<br><br>
+            Hôm nay em chính thức bước sang tuổi 19, độ tuổi đẹp nhất của thanh xuân, nơi những ước mơ còn dang dở và cả một bầu trời tương lai đang rộng mở phía trước.<br><br>
+            Từ tận đáy lòng, anh chỉ mong em luôn mạnh khỏe, bình an và mãi giữ được nụ cười trong trẻo như bây giờ. Cuộc sống sẽ có những ngày nắng đẹp, cũng sẽ có những lúc giông bão, nhưng anh hy vọng em sẽ luôn đủ mạnh mẽ để vượt qua tất cả và đủ dịu dàng để yêu thương chính mình.<br><br>
+            Cảm ơn em vì đã xuất hiện, để thanh xuân của ai đó có thêm một người đáng nhớ. Dù sau này mỗi người có đi trên một con đường riêng, anh vẫn mong em sẽ gặp được những điều tốt đẹp nhất, gặp đúng người biết trân trọng em và sống một cuộc đời thật hạnh phúc.<br><br>
+            Tuổi 19 chỉ đến một lần trong đời. Hãy sống hết mình, cười thật nhiều, theo đuổi những điều em yêu thích và đừng bao giờ từ bỏ ước mơ của mình.<br><br>
+            <strong>Chúc mừng sinh nhật tuổi 19, cô gái đặc biệt!</strong><br>
+            Mong rằng mỗi ngọn nến em thổi hôm nay sẽ mang theo một điều ước thành thực. Và dù ở bất cứ nơi đâu, anh vẫn luôn âm thầm chúc em có một cuộc đời rực rỡ, bình yên và hạnh phúc hơn tất cả những gì em từng mong đợi.<br><br>
+            <strong>Sinh nhật vui vẻ nhé, em! 🎂🎉💙</strong>
           </p>
         </div>
       </div>
-     <div class="album-container mt-20">
+
+      <!-- Photo Album -->
+      <div class="album-container mt-20">
         <h3 class="album-title">📸 Album Kỷ Niệm</h3>
         <div class="photo-grid">
           <div class="photo-item"><img src="assets/album1.jpg" alt="Kỷ niệm 1"></div>
@@ -101,12 +95,13 @@ Mong rằng mỗi ngọn nến em thổi hôm nay sẽ mang theo một điều �
           <div class="photo-item"><img src="assets/album4.jpg" alt="Kỷ niệm 4"></div>
           <div class="photo-item"><img src="assets/album5.jpg" alt="Kỷ niệm 5"></div>
           <div class="photo-item"><img src="assets/album6.jpg" alt="Kỷ niệm 6"></div>
-          <div class="photo-item"><img src="assets/album7.jpg" alt="Kỷ niệm 6"></div>
-          <div class="photo-item"><img src="assets/album8.jpg" alt="Kỷ niệm 6"></div>
-          <div class="photo-item"><img src="assets/album9.jpg" alt="Kỷ niệm 6"></div>
-          <div class="photo-item"><img src="assets/album10.jpg" alt="Kỷ niệm 6"></div>
+          <div class="photo-item"><img src="assets/album7.jpg" alt="Kỷ niệm 7"></div>
+          <div class="photo-item"><img src="assets/album8.jpg" alt="Kỷ niệm 8"></div>
+          <div class="photo-item"><img src="assets/album9.jpg" alt="Kỷ niệm 9"></div>
+          <div class="photo-item"><img src="assets/album10.jpg" alt="Kỷ niệm 10"></div>
         </div>
-      </div>s
+      </div>
+
       <button id="surprise-btn" class="btn-surprise mt-20">💝 Mở điều bất ngờ 💝</button>
     </div>
   </section>
